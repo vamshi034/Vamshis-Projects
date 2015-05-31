@@ -1,0 +1,23 @@
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+    <field name="newUserId">
+        <field-validator type="requiredstring">
+            <message>You must enter a user name.</message>
+        </field-validator>
+    </field>
+    
+    <field name="newPassword">
+        <field-validator type="requiredstring">
+            <message>You must enter a password.</message>
+        </field-validator>
+    </field>
+    <field name="newBalance">
+	    <field-validator type="double">
+	        <param name="fieldName">percentage</param>
+	        <param name="minInclusive">0.00</param>
+	        <param name="maxInclusive">1000.00</param>
+	        <message>Balance needs to be between ${minInclusive} and ${maxInclusive} (inclusive)</message>
+	    </field-validator>
+    </field>
+</validators>

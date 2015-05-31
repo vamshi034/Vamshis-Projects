@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+<constant name="struts.ui.theme" value="simple" /> <!--Remove struts styling-->
+<constant name="struts.devMode" value="false"/>
+
+	<package name="login" extends="struts-default, json-default" namespace="/">
+		<action name="asdf" class="org.vamshi.action.LoginAction" method="login">
+			<result name="input">/Login.jsp</result>
+			<result name="success">/success.jsp</result>
+			<result name="failure">/Login.jsp</result>
+		</action>
+		<action name="addCart" class="org.vamshi.action.BuisnessAction" method="addToCart">
+			<result name="success">/success.jsp</result>
+		</action>
+		<action name="removeCart" class="org.vamshi.action.BuisnessAction" method="removeCartItem">
+			<result name="success">/success.jsp</result>
+			<result name="failure">/Login.jsp</result>
+		</action>
+		<action name="viewCartItems" class="org.vamshi.action.BuisnessAction" method="getCartItems">
+			<result type="json">
+				<param name="noCache">true</param>
+		        <param name="excludeNullProperties">true</param> 
+		        <param name="root">cartJson</param>
+			</result>
+		</action>
+		<action name="getUserBalance" class="org.vamshi.action.BuisnessAction" method="getUserBalance">
+			<result type="json">
+				<param name="noCache">true</param>
+		        <param name="excludeNullProperties">true</param> 
+		        <param name="root">userBalanceJson</param>
+			</result>
+		</action>
+		<action name="newUser" class="org.vamshi.action.CreateUserAction" method="execute">
+			<result name="input">/Login.jsp</result>
+			<result name="success">/SuccessfulUser.jsp</result>
+			<result name="failure">/Login.jsp</result>
+		</action>
+		<action name="checkout" class="org.vamshi.action.BuisnessAction" method="checkout">
+			<result name="success">/success.jsp</result>
+		</action>
+		<action name="logout" class="org.vamshi.action.LoginAction" method="logout">
+			<result name="input">/Login.jsp</result> 
+			<result name="success">/Login.jsp</result>
+		</action>
+	</package>
+</struts>
